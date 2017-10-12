@@ -1,12 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the RegisterPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @IonicPage()
 @Component({
@@ -17,7 +11,7 @@ export class RegisterPage {
   @ViewChild('username') username;
   @ViewChild('password') password;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -25,7 +19,24 @@ export class RegisterPage {
   }
 
   createAccount() {
+    this.fire.auth.createUserWithEmailAndPassword(this.username.value, this.password.value)
+    .then(data => {
+      this.showAlert(this.fire.auth.currentUser.email);
+    })
+    .catch(error => {
+      console.log("error: ", error);
+    });
+
     console.log("created account:" + this.username.value + " " + this.password.value)
+  }
+
+  showAlert(msg) {
+    let alert = this.alertCtrl.create({
+      title: 'Welcome',
+      subTitle: 'Created account: ' + msg,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
 }

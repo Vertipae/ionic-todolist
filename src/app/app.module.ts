@@ -5,6 +5,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+const config = {
+  apiKey: "AIzaSyDqaRVe7gpsum0SDScfVg2SEI_CwQJCoSY",
+  authDomain: "todo-list-5d296.firebaseapp.com",
+  databaseURL: "https://todo-list-5d296.firebaseio.com",
+  projectId: "todo-list-5d296",
+  storageBucket: "todo-list-5d296.appspot.com",
+  messagingSenderId: "148059989057"
+};
 
 @NgModule({
   declarations: [
@@ -12,7 +23,9 @@ import { MyApp } from './app.component';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(config),
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -21,7 +34,7 @@ import { MyApp } from './app.component';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }
