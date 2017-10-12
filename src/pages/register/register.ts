@@ -20,20 +20,29 @@ export class RegisterPage {
 
   createAccount() {
     this.fire.auth.createUserWithEmailAndPassword(this.username.value, this.password.value)
-    .then(data => {
-      this.showAlert(this.fire.auth.currentUser.email);
-    })
-    .catch(error => {
-      console.log("error: ", error);
-    });
+      .then(data => {
+        this.successAlert(this.fire.auth.currentUser.email);
+      })
+      .catch(error => {
+        this.failAlert(error);
+      });
 
     console.log("created account:" + this.username.value + " " + this.password.value)
   }
 
-  showAlert(msg) {
+  successAlert(msg) {
     let alert = this.alertCtrl.create({
       title: 'Welcome',
       subTitle: 'Created account: ' + msg,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  failAlert(msg) {
+    let alert = this.alertCtrl.create({
+      title: 'FIAL',
+      subTitle: msg,
       buttons: ['OK']
     });
     alert.present();

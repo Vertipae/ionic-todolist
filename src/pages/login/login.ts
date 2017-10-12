@@ -21,15 +21,15 @@ export class LoginPage {
   signIn() {
     this.fire.auth.signInWithEmailAndPassword(this.username.value, this.password.value)
     .then(data => {
-      this.showAlert(this.fire.auth.currentUser.email);
+      this.successAlert(this.fire.auth.currentUser.email);
       this.navCtrl.setRoot('DashboardPage');
     })
     .catch(error => {
-      console.log("error: ", error);
+      this.failAlert(error);
     });
   }
 
-  showAlert(msg) {
+  successAlert(msg) {
     let alert = this.alertCtrl.create({
       title: 'Welcome',
       subTitle: 'You are logged in as ' + msg,
@@ -38,4 +38,12 @@ export class LoginPage {
     alert.present();
   }
 
+  failAlert(msg) {
+    let alert = this.alertCtrl.create({
+      title: 'Fail',
+      subTitle: msg,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 }
