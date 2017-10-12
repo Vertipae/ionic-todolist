@@ -22,6 +22,7 @@ export class LoginPage {
     this.fire.auth.signInWithEmailAndPassword(this.username.value, this.password.value)
     .then(data => {
       this.showAlert(this.fire.auth.currentUser.email);
+      this.navCtrl.setRoot('DashboardPage');
     })
     .catch(error => {
       console.log("error: ", error);
