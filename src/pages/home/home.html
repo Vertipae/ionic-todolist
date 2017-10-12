@@ -1,14 +1,30 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Welcome
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-row>
+    <ion-col>
+      <button ion-button block (click)="login()">Login</button>
+    </ion-col>
+
+    <ion-col>
+      <button ion-button block (click)="register()">Register</button>
+    </ion-col>
+  </ion-row>
+  <!-- <ion-list>
+
+    <ion-item>
+      <button ion-button block (click)="login()">Login</button>
+    </ion-item>
+
+    <ion-item>
+      <button ion-button block (click)="register()">Register</button>
+    </ion-item>
+
+  </ion-list> -->
 </ion-content>
