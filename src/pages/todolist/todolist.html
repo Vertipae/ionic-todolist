@@ -2,18 +2,23 @@
 Member area after login, tasklist
 -->
 <ion-header>
-  <ion-navbar color="primary">
-    <ion-title>
-      Welcome
-    </ion-title>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>To-do list</ion-title>
   </ion-navbar>
+
 </ion-header>
 
 <ion-content>
   <ion-row>
     <ion-col col-9>
       <ion-item>
-        <ion-input type="text" [(ngModel)]="newItem" placeholder="New Shopping item"></ion-input>
+        <ion-input type="text" [(ngModel)]="newItem" placeholder="New task"></ion-input>
       </ion-item>
     </ion-col>
     <ion-col>
@@ -22,7 +27,7 @@ Member area after login, tasklist
   </ion-row>
 
   <ion-list>
-    <ion-item-sliding *ngFor="let item of shoppingItems | async">
+    <ion-item-sliding *ngFor="let item of todoItems | async">
       <ion-item>
         {{ item.$value }}
       </ion-item>

@@ -11,7 +11,11 @@ export class LoginPage {
   @ViewChild('username') username;
   @ViewChild('password') password;
 
-  constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(
+    private fire: AngularFireAuth,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -22,7 +26,7 @@ export class LoginPage {
     this.fire.auth.signInWithEmailAndPassword(this.username.value, this.password.value)
     .then(data => {
       this.successAlert(this.fire.auth.currentUser.email);
-      this.navCtrl.setRoot('DashboardPage');
+      this.navCtrl.setRoot('MenuPage');
     })
     .catch(error => {
       this.failAlert(error);

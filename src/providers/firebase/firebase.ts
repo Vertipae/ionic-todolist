@@ -9,12 +9,15 @@ export class FirebaseProvider {
   userId: string;
   dbPath: string;
 
-  constructor(public afd: AngularFireDatabase, public fireAuth: AngularFireAuth) {
+  constructor(
+    public afd: AngularFireDatabase,
+    public fireAuth: AngularFireAuth) {
+
     this.userId = fireAuth.auth.currentUser.uid;
-    this.dbPath = `/shoppingItems/${this.userId}`;
+    this.dbPath = `/todoItems/${this.userId}`;
   }
 
-  getShoppingItems() {
+  getTodoItems() {
     return this.afd.list(this.dbPath);
   }
 

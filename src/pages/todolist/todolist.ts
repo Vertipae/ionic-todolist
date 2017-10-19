@@ -9,21 +9,26 @@ import { FirebaseListObservable } from 'angularfire2/database-deprecated';
 
 @IonicPage()
 @Component({
-  selector: 'page-dashboard',
-  templateUrl: 'dashboard.html',
+  selector: 'page-todolist',
+  templateUrl: 'todolist.html',
 })
-export class DashboardPage {
+export class TodolistPage {
   username: string;
-  shoppingItems: FirebaseListObservable<any[]>;
+  todoItems: FirebaseListObservable<any[]>;
   newItem = '';
 
-  constructor(public firebaseProvider: FirebaseProvider, public fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public firebaseProvider: FirebaseProvider,
+    public fire: AngularFireAuth,
+    public navCtrl: NavController,
+    public navParams: NavParams) {
+
     this.username = this.fire.auth.currentUser.email;
-    this.shoppingItems = this.firebaseProvider.getShoppingItems();
+    this.todoItems = this.firebaseProvider.getTodoItems();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DashboardPage');
+    console.log('ionViewDidLoad TodolistPage');
   }
 
   addItem() {

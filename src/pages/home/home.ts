@@ -1,26 +1,25 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-
-import { LoginPage } from '../login/login';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @IonicPage()
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
 })
 export class HomePage {
-  @ViewChild('username') username;
-  @ViewChild('password') password;
+  username = '';
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public fire: AngularFireAuth) {
+
+    this.username = this.fire.auth.currentUser.email;
   }
 
-  login() {
-    this.navCtrl.push('LoginPage');
-  }
-
-  register() {
-    this.navCtrl.push('RegisterPage');
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad HomePage');
   }
 
 }

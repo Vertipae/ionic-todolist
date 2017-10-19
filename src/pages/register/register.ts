@@ -11,7 +11,11 @@ export class RegisterPage {
   @ViewChild('username') username;
   @ViewChild('password') password;
 
-  constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(
+    private fire: AngularFireAuth,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
