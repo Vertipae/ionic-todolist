@@ -7,22 +7,32 @@ import { AngularFireAuth } from 'angularfire2/auth';
 @Injectable()
 export class FirebaseProvider {
   userId: string;
+  dbPath: string;
 
   constructor(public afd: AngularFireDatabase, public fireAuth: AngularFireAuth) {
     this.userId = fireAuth.auth.currentUser.uid;
+    this.dbPath = `/shoppingItems/${this.userId}`;
   }
 
   getShoppingItems() {
-    return this.afd.list(`/shoppingItems/${this.userId}`);
+    return this.afd.list(this.dbPath);
   }
 
   addItem(name) {
-    this.afd.list(`/shoppingItems/${this.userId}`).push(name);
+    this.afd.list(this.dbPath).push(name);
     console.log(this.userId);
   }
 
   removeItem(id) {
-    this.afd.list('/shoppingItems/').remove(id);
+    this.afd.list(this.dbPath).remove(id);
   }
 
 }
+
+// poss logout:
+
+// logout(){
+//     this.afA.auth.signOut().then(() => {
+//        ---this.router.navigate(['']);---
+//     });
+// }

@@ -1,5 +1,5 @@
 //
-// Member area after login
+// Member area after login, Tasklist
 //
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { Component } from '@angular/core';
