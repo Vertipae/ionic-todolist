@@ -10,14 +10,15 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { HttpModule } from '@angular/http';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FirebaseProvider } from '../providers/firebase/firebase';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 const config = {
-  apiKey: "AIzaSyDqaRVe7gpsum0SDScfVg2SEI_CwQJCoSY",
-  authDomain: "todo-list-5d296.firebaseapp.com",
-  databaseURL: "https://todo-list-5d296.firebaseio.com",
-  projectId: "todo-list-5d296",
-  storageBucket: "todo-list-5d296.appspot.com",
-  messagingSenderId: "148059989057"
+  apiKey: "AIzaSyCpljbxRqhHTS0SQIGd0n8hRf23F7aZJuk",
+    authDomain: "todolist-firestore.firebaseapp.com",
+    databaseURL: "https://todolist-firestore.firebaseio.com",
+    projectId: "todolist-firestore",
+    storageBucket: "todolist-firestore.appspot.com",
+    messagingSenderId: "69700370071"
 };
 
 @NgModule({
@@ -27,10 +28,11 @@ const config = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
     HttpModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(config),
+    AngularFirestoreModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

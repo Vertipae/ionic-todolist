@@ -7,9 +7,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 // import { FirebaseListObservable } from 'angularfire2/database-deprecated';
 
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { AngularFireList } from 'angularfire2/database';
+
+export interface Task { name: string; }
+export interface TaskId extends Task { id: string; }
 
 @IonicPage()
 @Component({
@@ -18,37 +22,48 @@ import { AngularFireList } from 'angularfire2/database';
 })
 export class TodolistPage {
   username: string;
-  // todoItems: FirebaseListObservable<any[]>;
   newItem = '';
-
-  itemsRef: AngularFireList<any>;
-  items: Observable<any[]>;
+  tasksCollection: AngularFirestoreCollection<Task>;
+  tasks: Observable<TaskId[]>;
+  userId: string;
 
   constructor(
+    public afs: AngularFirestore,
     public firebaseProvider: FirebaseProvider,
     public fire: AngularFireAuth,
     public navCtrl: NavController,
     public navParams: NavParams) {
 
     this.username = this.fire.auth.currentUser.email;
-    // this.itemsRef = this.firebaseProvider.getTodoItems();
-    this.itemsRef = this.firebaseProvider.getTodoItems();
-    this.items = this.itemsRef.snapshotChanges().map(changes => {
-      return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
-    });
-    console.log(this.items);
+    this.userId = this.fire.auth.currentUser.uid;
+
+    this.tasksCollection = this.afs.collection<Task>('tasks');
+
+    this.tasks = this.tasksCollection.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Task;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      })
+    })
+    // this.tasks = this.tasksCollection.snapshotChanges().map(changes => {
+    //   return changes.map(c => ({ key: c.payload.doc.id, name: c.payload.doc.data() }));
+    // })
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TodolistPage');
   }
 
-  // addItem() {
-  //   this.firebaseProvider.addItem(this.newItem);
-  // }
-  //
-  // removeItem(id) {
-  //   this.firebaseProvider.removeItem(id);
-  // }
+  logSnapshot() {
+    console.log(this.tasks[0]);
+  }
+  addItem() {
+    this.tasksCollection.add({name: this.newItem});
+  }
+
+  removeItem(id) {
+    this.tasksCollection.doc(id).delete();
+  }
 
 }
