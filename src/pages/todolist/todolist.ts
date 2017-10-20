@@ -26,6 +26,7 @@ export class TodolistPage {
   tasksCollection: AngularFirestoreCollection<Task>;
   tasks: Observable<TaskId[]>;
   userId: string;
+  tasksDbPath: string;
 
   constructor(
     public afs: AngularFirestore,
@@ -36,8 +37,8 @@ export class TodolistPage {
 
     this.username = this.fire.auth.currentUser.email;
     this.userId = this.fire.auth.currentUser.uid;
-
-    this.tasksCollection = this.afs.collection<Task>('tasks');
+    this.tasksDbPath = `/tasks/${this.userId}/entries`
+    this.tasksCollection = this.afs.collection<Task>(this.tasksDbPath);
 
     this.tasks = this.tasksCollection.snapshotChanges().map(actions => {
       return actions.map(a => {
