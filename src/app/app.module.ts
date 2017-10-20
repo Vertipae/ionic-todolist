@@ -8,7 +8,7 @@ import { MyApp } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { HttpModule } from '@angular/http';
-import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 
 const config = {

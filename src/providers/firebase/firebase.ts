@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
+// import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
 import { AngularFireAuth } from 'angularfire2/auth';
+
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class FirebaseProvider {
@@ -21,14 +25,14 @@ export class FirebaseProvider {
     return this.afd.list(this.dbPath);
   }
 
-  addItem(name) {
-    this.afd.list(this.dbPath).push(name);
-    console.log(this.userId);
-  }
-
-  removeItem(id) {
-    this.afd.list(this.dbPath).remove(id);
-  }
+  // addItem(name) {
+  //   this.afd.list(this.dbPath).push(name);
+  //   console.log(this.userId);
+  // }
+  //
+  // removeItem(id) {
+  //   this.afd.list(this.dbPath).remove(id);
+  // }
 
 }
 
