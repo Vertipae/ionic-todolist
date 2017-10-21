@@ -15,11 +15,11 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 .bgreen {
-  color: #4bff86;
+  color: map-get($colors, bgreen);
 }
 
 .dgreen {
-  color: #268545;
+  color: map-get($colors, dgreen);
 }
 
 .aboveTabs {
@@ -29,4 +29,12 @@
 
 .customFooter {
   font-size: 1.2rem;
+}
+
+.alert-title {
+  color: map-get($colors, bgreen);
+}
+
+.alert-sub-title {
+  color: #ffffff;
 }

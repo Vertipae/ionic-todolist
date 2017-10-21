@@ -41,18 +41,25 @@ $colors: (
   light:      #ff5e5e,
   dark:       #222,
   bgreen:     #4bff86,
+  //bgreen:     #622bff,
   dgreen:     #268545
+  //dgreen:     #ff6f6f
 );
 //OVERRIDES
 $tabs-background: #272727;
 $toolbar-background: #272727;
 $background-color: #252525;
-$tabs-md-tab-color-active: #4bff86;
-$tabs-md-tab-color-inactive: #268545;
+$tabs-md-tab-color-active: map-get($colors, bgreen);
+$tabs-md-tab-color-inactive: map-get($colors, dgreen);
 $text-color: #ffffff;
-$toolbar-md-title-text-color: #4bff86;
-$text-input-placeholder-color: #268545;
-$list-md-border-color: #3c3c3c;
+$toolbar-md-title-text-color: map-get($colors, bgreen);
+$text-input-placeholder-color: map-get($colors, dgreen);
+$list-md-border-color: #2f2f2f;
+//Alert
+$alert-md-background-color: #252525;
+$alert-md-button-background-color: map-get($colors, bgreen);
+$alert-md-button-text-color: #000000;
+$alert-md-input-text-color: #ffffff;
 
 // .item-input .label-md, .item-select .label-md, .item-datetime .label-md {
 //     color: #4bff86;

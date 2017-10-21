@@ -60,7 +60,7 @@ export class TodolistPage {
       inputs: [
         {
           name: 'title',
-          placeholder: taskName
+          value: taskName
         },
       ],
       buttons: [
@@ -73,7 +73,7 @@ export class TodolistPage {
         {
           text: 'Save',
           handler: data => {
-            console.log(data.title);
+            this.tasksCollection.doc(taskId).update({ name: data.title});
           }
         }
       ]
