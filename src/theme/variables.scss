@@ -37,9 +37,26 @@ $colors: (
   primary:    #488aff,
   secondary:  #32db64,
   danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
+  // light:      #f4f4f4,
+  light:      #ff5e5e,
+  dark:       #222,
+  bgreen:     #4bff86,
+  dgreen:     #268545
 );
+//OVERRIDES
+$tabs-background: #272727;
+$toolbar-background: #272727;
+$background-color: #252525;
+$tabs-md-tab-color-active: #4bff86;
+$tabs-md-tab-color-inactive: #268545;
+$text-color: #ffffff;
+$toolbar-md-title-text-color: #4bff86;
+$text-input-placeholder-color: #268545;
+$list-md-border-color: #3c3c3c;
+
+// .item-input .label-md, .item-select .label-md, .item-datetime .label-md {
+//     color: #4bff86;
+// }
 
 
 // App iOS Variables

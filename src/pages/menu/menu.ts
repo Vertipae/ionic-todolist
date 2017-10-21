@@ -44,12 +44,12 @@ export class MenuPage {
 
     if (childNav) {
       if (childNav.getSelected() && childNav.getSelected().root === page.tabComponent) {
-        return 'primary';
+        return 'bgreen';
       }
-      return;
+      return 'dgreen';
     }
     if (this.nav.getActive() && this.nav.getActive().name === page.pageName) {
-      return 'primary';
+      return 'bgreen';
     }
   }
   ionViewDidLoad() {

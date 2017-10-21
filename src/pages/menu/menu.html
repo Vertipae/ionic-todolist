@@ -10,7 +10,7 @@
       <ion-list>
         <button ion-item menuClose *ngFor="let p of pages" (click)="openPage(p)">
           <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>
-          {{ p.title }}
+          <span [class]="isActive(p)">{{ p.title }}</span>
         </button>
       </ion-list>
       <button ion-item (click)="logout()">

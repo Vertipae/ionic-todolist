@@ -14,11 +14,11 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 const config = {
   apiKey: "AIzaSyCpljbxRqhHTS0SQIGd0n8hRf23F7aZJuk",
-    authDomain: "todolist-firestore.firebaseapp.com",
-    databaseURL: "https://todolist-firestore.firebaseio.com",
-    projectId: "todolist-firestore",
-    storageBucket: "todolist-firestore.appspot.com",
-    messagingSenderId: "69700370071"
+  authDomain: "todolist-firestore.firebaseapp.com",
+  databaseURL: "https://todolist-firestore.firebaseio.com",
+  projectId: "todolist-firestore",
+  storageBucket: "todolist-firestore.appspot.com",
+  messagingSenderId: "69700370071"
 };
 
 @NgModule({

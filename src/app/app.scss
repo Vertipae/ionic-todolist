@@ -14,3 +14,19 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.bgreen {
+  color: #4bff86;
+}
+
+.dgreen {
+  color: #268545;
+}
+
+.aboveTabs {
+  padding-bottom: 48px;
+  z-index: 0;
+}
+
+.customFooter {
+  font-size: 1.2rem;
+}
