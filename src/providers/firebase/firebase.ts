@@ -24,16 +24,6 @@ export class FirebaseProvider {
   getTodoItems() {
     return this.afd.list(this.dbPath);
   }
-
-  // addItem(name) {
-  //   this.afd.list(this.dbPath).push(name);
-  //   console.log(this.userId);
-  // }
-  //
-  // removeItem(id) {
-  //   this.afd.list(this.dbPath).remove(id);
-  // }
-
 }
 
 // poss logout:

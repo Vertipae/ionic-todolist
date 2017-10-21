@@ -15,7 +15,7 @@ export class RegisterPage {
     private fire: AngularFireAuth,
     public navCtrl: NavController,
     public navParams: NavParams,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController){
   }
 
   ionViewDidLoad() {
