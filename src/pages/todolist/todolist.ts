@@ -1,6 +1,6 @@
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
@@ -26,7 +26,8 @@ export class TodolistPage {
   constructor(
     public afs: AngularFirestore,
     public firebaseProvider: FirebaseProvider,
-    public fire: AngularFireAuth) {
+    public fire: AngularFireAuth,
+    public alertCtrl: AlertController) {
 
     this.userId = this.fire.auth.currentUser.uid;
     this.tasksDbPath = `/tasks/${this.userId}/entries`
@@ -53,4 +54,30 @@ export class TodolistPage {
     this.tasksCollection.doc(id).delete();
   }
 
+  showEditPrompt(taskId, taskName) {
+    let prompt = this.alertCtrl.create({
+      title: 'Edit task',
+      inputs: [
+        {
+          name: 'title',
+          placeholder: taskName
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            console.log(data.title);
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
 }
