@@ -1,7 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-
-import { LoginPage } from '../login/login';
+import { IonicPage, NavController, AlertController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
